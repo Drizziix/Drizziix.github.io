@@ -216,6 +216,8 @@ blockquote.words footer { margin-top: 16px; font-size: var(--t-sm); color: var(-
 .links li:first-child { border-top: 0; }
 .links .net { font-weight: 700; color: var(--fg-strong); }
 .links .handle { font-size: var(--t-sm); color: var(--muted); text-align: right; }
+.links a.golink { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--accent); font-weight: 700; text-decoration: none; }
+.links a.golink:hover { text-decoration: underline; }
 .pill { display: inline-block; font: 700 11px/1 var(--font); letter-spacing: .1em; text-transform: uppercase; padding: 5px 8px 4px; border-radius: 3px; border: 1px dashed var(--muted); color: var(--muted); margin-left: 8px; white-space: nowrap; }
 @media (max-width: 860px) { .connect { grid-template-columns: minmax(0, 1fr); } }
 
@@ -391,7 +393,7 @@ blockquote.words footer { margin-top: 16px; font-size: var(--t-sm); color: var(-
           <ul>
             <li><span class="net">LinkedIn</span><span class="handle">Professional updates<span class="pill">Soon</span></span></li>
             <li><span class="net">Instagram</span><span class="handle">@osseoexperimentus<span class="pill">Soon</span></span></li>
-            <li><span class="net">YouTube</span><span class="handle">@osseoexperimentus<span class="pill">Soon</span></span></li>
+            <li><span class="net">YouTube</span><a class="handle golink" href="https://www.youtube.com/@osseoexperimentus" target="_blank" rel="noopener">@osseoexperimentus <span aria-hidden="true">↗</span></a></li>
           </ul>
         </div>
       </div>
