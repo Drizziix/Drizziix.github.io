@@ -372,18 +372,18 @@ blockquote.words footer { margin-top: 16px; font-size: var(--t-sm); color: var(-
       <div class="connect">
         <div class="mailbox">
           <span class="lab">Email</span>
-          <p class="addr pending" id="addr">Brand email coming soon</p>
+          <p class="addr" id="addr">Kinglyadmin@gmail.com</p>
           <div class="row">
-            <button class="btn btn-primary" id="copyBtn" type="button" disabled>Copy email</button>
-            <span class="status" id="copyStatus" role="status">The address goes here once it's set up.</span>
+            <button class="btn btn-primary" id="copyBtn" type="button">Copy email</button>
+            <span class="status" id="copyStatus" role="status"></span>
           </div>
         </div>
         <div class="links">
           <span class="lab">Find me</span>
           <ul>
             <li><span class="net">LinkedIn</span><span class="handle">Professional updates<span class="pill">Soon</span></span></li>
-            <li><span class="net">Instagram</span><span class="handle">Training, school, builds<span class="pill">Soon</span></span></li>
-            <li><span class="net">YouTube</span><span class="handle">Short lessons on the body<span class="pill">Soon</span></span></li>
+            <li><span class="net">Instagram</span><span class="handle">@osseoexperimentus<span class="pill">Soon</span></span></li>
+            <li><span class="net">YouTube</span><span class="handle">@osseoexperimentus<span class="pill">Soon</span></span></li>
           </ul>
         </div>
       </div>
@@ -434,8 +434,7 @@ blockquote.words footer { margin-top: 16px; font-size: var(--t-sm); color: var(-
     });
   });
 
-  // Fill this in once the brand email exists, e.g. var EMAIL = 'hello@example.com';
-  var EMAIL = '';
+  var EMAIL = 'Kinglyadmin@gmail.com';
   var addr = document.getElementById('addr'), copyBtn = document.getElementById('copyBtn'), status = document.getElementById('copyStatus');
   if (EMAIL) {
     addr.textContent = EMAIL; addr.classList.remove('pending');
