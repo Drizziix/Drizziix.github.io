@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="JD">
+<meta property="og:description" content="I help people improve their lives.">
+</head>
+<body style="margin:0">
+<title>JD</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="JD, chiropractic student at Parker University. Learning how the body is wired, building tools, and helping people improve their lives.">
+<meta name="theme-color" content="#131719">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231B2124'/%3E%3Cpath d='M50 10 V90' stroke='%234FA9A9' stroke-width='7'/%3E%3Cpath d='M30 24 V62 A11 11 0 0 1 8 62' fill='none' stroke='%23E4EAEC' stroke-width='11'/%3E%3Cpath d='M64 24 H70 A16 26 0 0 1 70 76 H64 Z' fill='none' stroke='%23E4EAEC' stroke-width='11'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&display=swap">
+<style>
+/* Layout: one column hung on a plumb line. A thin teal vertical runs down the page like a posture line;
+   each section is a "level" on it (C1 at the top, S1 at the bottom), the way the spine stacks.
+   Instrument identity: Iron Teal on dark, Michroma for the name and short caps only, Manrope for the rest, 1.25 scale. */
+:root {
+  --bg: #131719;
+  --surface: #1B2124;
+  --raise: #222A2E;
+  --line: #2A3236;
+  --fg: #CDD6D9;
+  --fg-strong: #E4EAEC;
+  --muted: #86939A;
+  --accent: #4FA9A9;
+  --accent-soft: rgba(79,169,169,.12);
+  --on-accent: #0E1416;
+  --pro: #4FA9A9;
+  --proj: #7FA7D8;
+  --pers: #D98E5F;
+  --font: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --mark: "Michroma", "Eurostile", "Manrope", sans-serif;
+  --t-xs: .8rem; --t-sm: .9rem; --t-base: 1rem; --t-lg: 1.25rem; --t-xl: 1.5625rem;
+  --t-2xl: 1.953rem; --t-3xl: 2.441rem; --t-4xl: 3.052rem; --t-5xl: 3.815rem;
+  --r: 4px;
+  --shell: 1120px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F3F5F6; --surface: #FFFFFF; --raise: #E3E8EB; --line: #D7DEE2;
+    --fg: #172025; --fg-strong: #0B1419; --muted: #56646B;
+    --accent: #1A6E72; --accent-soft: rgba(26,110,114,.09); --on-accent: #FFFFFF;
+    --pro: #1A6E72; --proj: #3D5F94; --pers: #9E5530;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F3F5F6; --surface: #FFFFFF; --raise: #E3E8EB; --line: #D7DEE2;
+  --fg: #172025; --fg-strong: #0B1419; --muted: #56646B;
+  --accent: #1A6E72; --accent-soft: rgba(26,110,114,.09); --on-accent: #FFFFFF;
+  --pro: #1A6E72; --proj: #3D5F94; --pers: #9E5530;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #131719; --surface: #1B2124; --raise: #222A2E; --line: #2A3236;
+  --fg: #CDD6D9; --fg-strong: #E4EAEC; --muted: #86939A;
+  --accent: #4FA9A9; --accent-soft: rgba(79,169,169,.12); --on-accent: #0E1416;
+  --pro: #4FA9A9; --proj: #7FA7D8; --pers: #D98E5F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html, body { background: var(--bg); color: var(--fg); }
+body { font: 400 var(--t-base)/1.55 var(--font); -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { transition: none !important; animation: none !important; } }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+strong { color: var(--fg-strong); font-weight: 700; }
+p { margin: 0; }
+h1, h2, h3 { margin: 0; color: var(--fg-strong); text-wrap: balance; }
+
+.skip { position: absolute; left: 16px; top: -60px; z-index: 20; background: var(--accent); color: var(--on-accent); padding: 10px 14px; border-radius: var(--r); font-weight: 700; text-decoration: none; }
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 8px); }
+
+.shell { max-width: var(--shell); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 8; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .shell { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg-strong); min-height: 44px; }
+.brand svg { width: 36px; height: 36px; flex: none; }
+.brand b { font: 400 var(--t-base)/1 var(--mark); letter-spacing: .14em; }
+nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; color: var(--muted); text-decoration: none; font-weight: 600; font-size: var(--t-sm); border-radius: var(--r); transition: color .18s ease-out, background .18s ease-out; }
+nav a:hover { color: var(--fg-strong); background: var(--surface); }
+.tools { display: flex; align-items: center; gap: 8px; }
+.iconbtn { width: 44px; height: 44px; display: grid; place-items: center; background: transparent; border: 1px solid var(--line); border-radius: var(--r); color: var(--muted); cursor: pointer; transition: color .18s ease-out, border-color .18s ease-out; }
+.iconbtn:hover { color: var(--fg-strong); border-color: var(--accent); }
+.iconbtn:active { transform: translateY(1px); }
+.iconbtn svg { width: 18px; height: 18px; }
+@media (max-width: 760px) { nav { display: none; } }
+
+/* Plumb line: the page's spine */
+main { position: relative; }
+.plumb { position: absolute; top: 0; bottom: 0; left: max(16px, calc((100% - var(--shell)) / 2 + 16px)); width: 1px; background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 30%, transparent)); pointer-events: none; }
+.sec { position: relative; padding-block: clamp(56px, 8vw, 104px); }
+.sec + .sec { border-top: 1px solid var(--line); }
+.inner { padding-left: clamp(24px, 5vw, 64px); }
+.level { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.level::before { content: ""; position: absolute; left: -4px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.level { position: relative; margin-left: calc(-1 * clamp(24px, 5vw, 64px)); padding-left: clamp(24px, 5vw, 64px); }
+.level .code { font: 400 var(--t-xs)/1 var(--mark); letter-spacing: .16em; color: var(--accent); }
+.level .name { font: 700 var(--t-xs)/1 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.sec h2 { font: 800 clamp(var(--t-2xl), 4vw, var(--t-3xl))/1.1 var(--font); letter-spacing: -.015em; max-width: 22ch; }
+.sec .intro { margin-top: 16px; max-width: 62ch; color: var(--muted); font-size: var(--t-lg); line-height: 1.5; }
+
+/* Hero */
+.hero { padding-block: clamp(48px, 9vw, 112px) clamp(56px, 8vw, 96px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.hero .who { font: 400 var(--t-sm)/1.4 var(--mark); letter-spacing: .2em; text-transform: uppercase; color: var(--fg-strong); }
+.hero .role { margin-top: 8px; font-weight: 600; font-size: var(--t-sm); color: var(--muted); letter-spacing: .02em; }
+.hero h1 { margin-top: 24px; font: 800 clamp(var(--t-3xl), 6.2vw, var(--t-5xl))/1.04 var(--font); letter-spacing: -.025em; max-width: 13ch; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { margin-top: 24px; max-width: 54ch; font-size: var(--t-lg); line-height: 1.5; color: var(--fg); }
+.ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: var(--r); font: 700 var(--t-base)/1 var(--font); text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: background .18s ease-out, border-color .18s ease-out, color .18s ease-out, transform .18s ease-out; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: color-mix(in srgb, var(--accent) 86%, var(--fg-strong)); }
+.btn-quiet { background: transparent; color: var(--fg-strong); border-color: var(--line); }
+.btn-quiet:hover { border-color: var(--accent); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* Hero instrument: the mark on a measured plumb line */
+.instrument { position: relative; aspect-ratio: 4 / 5; max-width: 100%; width: 100%; border: 1px solid var(--line); border-radius: var(--r); background:
+  repeating-linear-gradient(to bottom, transparent 0 23px, color-mix(in srgb, var(--line) 70%, transparent) 23px 24px), var(--surface); overflow: hidden; }
+.instrument svg.big { position: absolute; inset: 0; margin: auto; width: 62%; height: auto; }
+.instrument .ticks { position: absolute; top: 0; bottom: 0; right: 14px; display: flex; flex-direction: column; justify-content: space-between; padding-block: 18px; font: 400 10px/1 var(--mark); letter-spacing: .12em; color: var(--muted); text-align: right; }
+.instrument .ticks span::after { content: ""; display: inline-block; width: 10px; height: 1px; background: var(--muted); vertical-align: middle; margin-left: 6px; }
+.instrument .readout { position: absolute; left: 14px; bottom: 14px; font: 600 var(--t-xs)/1.4 var(--font); color: var(--muted); }
+.instrument .readout b { display: block; font: 400 var(--t-xs)/1.4 var(--mark); letter-spacing: .14em; color: var(--accent); }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .instrument { aspect-ratio: 16 / 10; }
+  .instrument svg.big { width: 34%; }
+}
+
+/* Story */
+.story-grid { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-left: 1px solid var(--line); }
+.steps li { position: relative; padding: 0 0 24px 24px; }
+.steps li:last-child { padding-bottom: 0; }
+.steps li::before { content: ""; position: absolute; left: -5px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.steps li:last-child::before { background: var(--accent); border-color: var(--accent); }
+.steps b { display: block; color: var(--fg-strong); font-size: var(--t-lg); line-height: 1.3; }
+.steps span { display: block; margin-top: 4px; color: var(--muted); }
+blockquote.words { margin: 0; padding: 24px 24px 24px 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); position: relative; }
+blockquote.words::before { content: ""; position: absolute; left: 0; top: 24px; bottom: 24px; width: 3px; background: var(--accent); }
+blockquote.words p { font-size: var(--t-lg); line-height: 1.55; color: var(--fg-strong); }
+blockquote.words p + p { margin-top: 16px; }
+blockquote.words footer { margin-top: 16px; font-size: var(--t-sm); color: var(--muted); }
+@media (max-width: 860px) { .story-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+
+/* Now: three branches */
+.branches { margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.branch { min-width: 0; padding: 24px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--c); border-radius: var(--r); display: flex; flex-direction: column; gap: 12px; }
+.branch .lab { font: 700 var(--t-xs)/1 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+.branch h3 { font: 800 var(--t-xl)/1.2 var(--font); }
+.branch p { color: var(--fg); }
+.branch ul { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: var(--t-sm); display: grid; gap: 6px; }
+.branch ul li::marker { color: var(--c); }
+.b-pro { --c: var(--pro); } .b-proj { --c: var(--proj); } .b-pers { --c: var(--pers); }
+@media (max-width: 900px) { .branches { grid-template-columns: minmax(0, 1fr); } }
+
+/* Trace the chain */
+.trace { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: stretch; }
+.chain { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.chain button { width: 100%; display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 16px; min-height: 60px; padding: 10px 16px; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); color: var(--fg); font: inherit; cursor: pointer; transition: border-color .18s ease-out, background .18s ease-out; }
+.chain button:hover { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
+.chain button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.chain .lvl { font: 400 var(--t-xs)/1 var(--mark); letter-spacing: .12em; color: var(--accent); }
+.chain .where { font-weight: 700; color: var(--fg-strong); }
+.chain .where small { display: block; font-weight: 500; color: var(--muted); font-size: var(--t-sm); margin-top: 2px; }
+.chain .arrow { color: var(--muted); font-size: var(--t-lg); }
+.chain li:last-child .arrow { visibility: hidden; }
+.explain { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 12px; min-height: 280px; }
+.explain .lvl { font: 400 var(--t-xs)/1 var(--mark); letter-spacing: .14em; color: var(--accent); }
+.explain h3 { font: 800 var(--t-xl)/1.2 var(--font); }
+.explain p { color: var(--fg); }
+.explain .note { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); font-size: var(--t-sm); color: var(--muted); }
+@media (max-width: 860px) { .trace { grid-template-columns: minmax(0, 1fr); } .explain { min-height: 0; } }
+
+/* Values */
+.values { margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.values > div { min-width: 0; padding: 24px 24px 0 0; }
+.values h3 { font: 800 var(--t-lg)/1.3 var(--font); }
+.values p { margin-top: 8px; color: var(--muted); }
+.limits { margin-top: 40px; padding: 20px 24px; border: 1px dashed var(--line); border-radius: var(--r); color: var(--muted); max-width: 72ch; }
+.limits strong { color: var(--fg-strong); }
+@media (max-width: 760px) { .values { grid-template-columns: minmax(0, 1fr); } .values > div { padding-right: 0; } }
+
+/* Connect */
+.connect { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.mailbox { padding: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); display: flex; flex-direction: column; gap: 16px; }
+.mailbox .lab, .links .lab { font: 700 var(--t-xs)/1 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.addr { font: 700 var(--t-xl)/1.3 var(--font); color: var(--fg-strong); overflow-wrap: anywhere; user-select: all; }
+.addr.pending { color: var(--muted); }
+.mailbox .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.status { font-size: var(--t-sm); color: var(--muted); min-height: 1.4em; }
+.links { padding: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.links ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; }
+.links li { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; border-top: 1px solid var(--line); }
+.links li:first-child { border-top: 0; }
+.links .net { font-weight: 700; color: var(--fg-strong); }
+.links .handle { font-size: var(--t-sm); color: var(--muted); text-align: right; }
+.pill { display: inline-block; font: 700 11px/1 var(--font); letter-spacing: .1em; text-transform: uppercase; padding: 5px 8px 4px; border-radius: 3px; border: 1px dashed var(--muted); color: var(--muted); margin-left: 8px; white-space: nowrap; }
+@media (max-width: 860px) { .connect { grid-template-columns: minmax(0, 1fr); } }
+
+/* Footer */
+.foot { border-top: 1px solid var(--line); padding-block: 32px 48px; color: var(--muted); font-size: var(--t-sm); }
+.foot .shell { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; }
+.foot p { max-width: 70ch; }
+.foot .sig { font: 400 var(--t-xs)/1.6 var(--mark); letter-spacing: .16em; color: var(--fg); }
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="shell">
+    <a class="brand" href="#top" aria-label="JD, home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M17 22 H11 V78 H17 M83 22 H89 V78 H83" fill="none" stroke="var(--accent)" stroke-width="6"/><path d="M50 14 V86" stroke="var(--accent)" stroke-width="5"/><path d="M37 30 V60 A8 8 0 0 1 21 60" fill="none" stroke="var(--fg-strong)" stroke-width="7"/><path d="M60 30 H66 A12 19 0 0 1 66 68 H60 Z" fill="none" stroke="var(--fg-strong)" stroke-width="7"/></svg>
+      <b>JD</b>
+    </a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#now">Now</a></li>
+        <li><a href="#trace">Trace it</a></li>
+        <li><a href="#values">How I work</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch to light mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="plumb" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="sec hero" id="top" aria-labelledby="h-hero">
+    <div class="shell"><div class="inner hero-grid">
+      <div>
+        <div class="level"><span class="code">C1</span><span class="name">Hello</span></div>
+        <p class="who">JD</p>
+        <p class="role">Chiropractic student at Parker University · Air Force veteran · Jiu-jitsu</p>
+        <h1 id="h-hero">I help people <em>improve their lives.</em></h1>
+        <p class="lede">I got hurt training, a chiropractor got me back on the mat, and now I'm learning how the body is wired so I can do that for other people. This is where I show the work while I get there.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#connect">Ask me a question</a>
+          <a class="btn btn-quiet" href="#story">Read the story</a>
+        </div>
+      </div>
+      <figure class="instrument" aria-label="The JD mark: a J and a D split by a plumb line, the way a posture line splits the body" style="margin:0">
+        <svg class="big" viewBox="0 0 100 100" aria-hidden="true"><path d="M20 28 H13 V72 H20 M80 28 H87 V72 H80" fill="none" stroke="var(--accent)" stroke-width="2.4"/><path d="M50 4 V96" stroke="var(--accent)" stroke-width="1.4"/><path d="M40 34 V58 A8 8 0 0 1 24 58" fill="none" stroke="var(--fg-strong)" stroke-width="3.2"/><path d="M58 34 H64 A13 16 0 0 1 64 66 H58 Z" fill="none" stroke="var(--fg-strong)" stroke-width="3.2"/></svg>
+        <div class="ticks" aria-hidden="true"><span>C1</span><span>C7</span><span>T6</span><span>T12</span><span>L3</span><span>L5</span><span>S1</span></div>
+        <figcaption class="readout"><b>Plumb line</b>Ear, shoulder, hip, ankle. One straight line.</figcaption>
+      </figure>
+    </div></div>
+  </section>
+
+  <!-- Story -->
+  <section class="sec" id="story" aria-labelledby="h-story">
+    <div class="shell"><div class="inner">
+      <div class="level"><span class="code">C7</span><span class="name">The story</span></div>
+      <h2 id="h-story">An injury, a good chiropractor, and a new direction.</h2>
+      <p class="intro">Same story whether you've got 10 seconds or 10 minutes. It starts with getting hurt and ends with wanting to help.</p>
+      <div class="story-grid">
+        <ol class="steps">
+          <li><b>Before</b><span>Joined the Air Force to travel and get an education. Worked as an engineer. Earned a kinesiology degree at the University of North Texas.</span></li>
+          <li><b>The injury</b><span>Got hurt training MMA and jiu-jitsu. Feet, wrists, knees, hip, plus tendonitis and radiculopathy along the way.</span></li>
+          <li><b>The turn</b><span>A chiropractor got me back to training. Seeing how much that changed my life is why I chose Parker.</span></li>
+          <li><b>Now</b><span>About two years into the Doctor of Chiropractic program. Studying, training, and building tools that make the work easier.</span></li>
+          <li><b>The mission</b><span>Help people improve their lives. Long term, a neuro and family focused practice of my own.</span></li>
+        </ol>
+        <blockquote class="words">
+          <p>"The Air Force was a phenomenal opportunity that built me forward, and engineering ironed out my ability to problem-solve."</p>
+          <p>"If I'm being honest, I feel better every day I'm under chiropractic care. I'm out here to help people. I'm not sure yet where it'll take me, but it'll be a fulfilled and purposeful life I can look back on and be proud of."</p>
+          <footer>In my own words</footer>
+        </blockquote>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Now -->
+  <section class="sec" id="now" aria-labelledby="h-now">
+    <div class="shell"><div class="inner">
+      <div class="level"><span class="code">T6</span><span class="name">What I'm working on</span></div>
+      <h2 id="h-now">Learning in public.</h2>
+      <p class="intro">I'm not a doctor yet. The goal right now is to get skilled enough to help anyone who walks in, so this is the work of getting there, not claims of being there.</p>
+      <div class="branches">
+        <article class="branch b-pro">
+          <span class="lab">The body</span>
+          <h3>How it's wired</h3>
+          <p>Following problems from where they hurt back to where they start. Nerves, joints, and the chain in between.</p>
+          <ul><li>Neuro-based and family care</li><li>Short lessons that trace one chain at a time</li><li>Boards prep comes first</li></ul>
+        </article>
+        <article class="branch b-proj">
+          <span class="lab">Builds</span>
+          <h3>Tools that do the work</h3>
+          <p>I run my own home server and build AI tools and small apps that make studying and daily life run smoother.</p>
+          <ul><li>A personal hub for school, training, and life</li><li>Study tools for classmates</li><li>Fabrication and 3D printing on the side</li></ul>
+        </article>
+        <article class="branch b-pers">
+          <span class="lab">Training and life</span>
+          <h3>Living it</h3>
+          <p>Jiu-jitsu, long walks, camping, and chasing fitness goals out in the open, injuries and all.</p>
+          <ul><li>On the mat most weeks</li><li>Outdoors whenever school allows</li><li>Gaming when the brain needs a break</li></ul>
+        </article>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Trace the chain -->
+  <section class="sec" id="trace" aria-labelledby="h-trace">
+    <div class="shell"><div class="inner">
+      <div class="level"><span class="code">T12</span><span class="name">Trace the chain</span></div>
+      <h2 id="h-trace">Your pinky going numb can start at your neck.</h2>
+      <p class="intro">Here's how I think about it. Start where it hurts and follow the nerve back. Tap any point on the chain.</p>
+      <div class="trace">
+        <ol class="chain" id="chain">
+          <li><button type="button" data-i="0" aria-pressed="true"><span class="lvl">01</span><span class="where">Pinky and half the ring finger<small>Where you feel it</small></span><span class="arrow" aria-hidden="true">↑</span></button></li>
+          <li><button type="button" data-i="1" aria-pressed="false"><span class="lvl">02</span><span class="where">Wrist<small>Guyon's canal</small></span><span class="arrow" aria-hidden="true">↑</span></button></li>
+          <li><button type="button" data-i="2" aria-pressed="false"><span class="lvl">03</span><span class="where">Elbow<small>Cubital tunnel, the "funny bone"</small></span><span class="arrow" aria-hidden="true">↑</span></button></li>
+          <li><button type="button" data-i="3" aria-pressed="false"><span class="lvl">04</span><span class="where">Collarbone and first rib<small>Thoracic outlet</small></span><span class="arrow" aria-hidden="true">↑</span></button></li>
+          <li><button type="button" data-i="4" aria-pressed="false"><span class="lvl">05</span><span class="where">Neck<small>C8 and T1 nerve roots</small></span><span class="arrow" aria-hidden="true">↑</span></button></li>
+        </ol>
+        <div class="explain" aria-live="polite">
+          <span class="lvl" id="exLvl">01 · Where you feel it</span>
+          <h3 id="exTitle">The ulnar nerve's territory</h3>
+          <p id="exBody">The pinky and the pinky side of the ring finger get their feeling from the ulnar nerve. So numbness there is a clue about which wire to follow, not proof of where the problem is.</p>
+          <p class="note">Education only, not medical advice. It's not the same for everyone. If something's numb or weak, see a licensed provider. Have any questions? Let me show you more.</p>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Values -->
+  <section class="sec" id="values" aria-labelledby="h-values">
+    <div class="shell"><div class="inner">
+      <div class="level"><span class="code">L3</span><span class="name">How I work</span></div>
+      <h2 id="h-values">Disciplined, capable, independent.</h2>
+      <div class="values">
+        <div><h3>Disciplined</h3><p>I show up on schedule and ship what I promised. The plan runs the work, not my mood.</p></div>
+        <div><h3>Capable</h3><p>I know the material and show my work. When I don't know yet, I say so instead of bluffing.</p></div>
+        <div><h3>Independent</h3><p>I build my own tools, own my own path, and make my own calls. Staying debt-free is part of that.</p></div>
+      </div>
+      <p class="limits"><strong>What you won't get here:</strong> cure claims, guaranteed results, hype, or advice for your specific case. I'm a student, not a licensed provider. I'll explain how things work and point you to someone who can examine you.</p>
+    </div></div>
+  </section>
+
+  <!-- Connect -->
+  <section class="sec" id="connect" aria-labelledby="h-connect">
+    <div class="shell"><div class="inner">
+      <div class="level"><span class="code">S1</span><span class="name">Connect</span></div>
+      <h2 id="h-connect">Have any questions? Let me show you more.</h2>
+      <p class="intro">Doctors, clinic owners, classmates, or anyone curious about how the body works. Reach out.</p>
+      <div class="connect">
+        <div class="mailbox">
+          <span class="lab">Email</span>
+          <p class="addr pending" id="addr">Brand email coming soon</p>
+          <div class="row">
+            <button class="btn btn-primary" id="copyBtn" type="button" disabled>Copy email</button>
+            <span class="status" id="copyStatus" role="status">The address goes here once it's set up.</span>
+          </div>
+        </div>
+        <div class="links">
+          <span class="lab">Find me</span>
+          <ul>
+            <li><span class="net">LinkedIn</span><span class="handle">Professional updates<span class="pill">Soon</span></span></li>
+            <li><span class="net">Instagram</span><span class="handle">Training, school, builds<span class="pill">Soon</span></span></li>
+            <li><span class="net">YouTube</span><span class="handle">Short lessons on the body<span class="pill">Soon</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <p class="sig">JD</p>
+    <p>Chiropractic student at Parker University. Not a licensed provider. Everything here is education only, not medical advice. © 2026 JD.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  function current() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+  function label() { btn.setAttribute('aria-label', current() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'); }
+  try { var saved = localStorage.getItem('jd-theme'); if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved); } catch (e) {}
+  label();
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('jd-theme', next); } catch (e) {}
+    label();
+  });
+
+  var steps = [
+    ['01 · Where you feel it', "The ulnar nerve's territory", "The pinky and the pinky side of the ring finger get their feeling from the ulnar nerve. So numbness there is a clue about which wire to follow, not proof of where the problem is."],
+    ['02 · Wrist', "Guyon's canal", "Right before the hand, the ulnar nerve runs through a small tunnel at the wrist. Steady pressure there, like leaning on handlebars for a long ride, can irritate it."],
+    ['03 · Elbow', 'Cubital tunnel', "The \"funny bone\" is the ulnar nerve sitting right under the skin at the elbow. Keeping the elbow bent for a long time, like sleeping on your arm or holding a phone, stretches and squeezes it. This is the most common spot."],
+    ['04 · Collarbone and first rib', 'Thoracic outlet', "Before the nerves split into the arm, they pass between the collarbone and the first rib as a bundle called the brachial plexus. The lower part of that bundle feeds the ulnar nerve, so tightness or posture here can show up all the way down in the pinky."],
+    ['05 · Neck', 'C8 and T1 nerve roots', "Think of the spinal cord like the stem. The nerve roots grow out from it, and the ones at the bottom of the neck and top of the back, C8 and T1, carry the pinky's signal. Irritation where those roots exit the spine is the far end of the chain."]
+  ];
+  var lvl = document.getElementById('exLvl'), title = document.getElementById('exTitle'), body = document.getElementById('exBody');
+  var buttons = document.querySelectorAll('#chain button');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var s = steps[+b.dataset.i];
+      buttons.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      lvl.textContent = s[0]; title.textContent = s[1]; body.textContent = s[2];
+    });
+  });
+
+  // Fill this in once the brand email exists, e.g. var EMAIL = 'hello@example.com';
+  var EMAIL = '';
+  var addr = document.getElementById('addr'), copyBtn = document.getElementById('copyBtn'), status = document.getElementById('copyStatus');
+  if (EMAIL) {
+    addr.textContent = EMAIL; addr.classList.remove('pending');
+    copyBtn.disabled = false; status.textContent = '';
+    copyBtn.addEventListener('click', function () {
+      var done = function () { status.textContent = 'Copied.'; };
+      var fail = function () {
+        var r = document.createRange(); r.selectNodeContents(addr);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        status.textContent = 'Selected. Press Ctrl+C to copy.';
+      };
+      try { navigator.clipboard.writeText(EMAIL).then(done, fail); } catch (e) { fail(); }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
