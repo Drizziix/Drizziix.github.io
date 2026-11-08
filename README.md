@@ -1,7 +1,9 @@
 # JD
 
-Personal site. Live at https://drizziix.github.io
+**Live site: https://drizziix.github.io**
 
-One self-contained page (`index.html`): HTML, CSS, and a little JS, no build step. Brand: "Instrument" identity from the JD Brand Book.
+This page is the source code. Open the link above to see the website.
 
-To set the contact email, edit `var EMAIL = ...` near the bottom of `index.html`.
+[![JD website](preview.png)](https://drizziix.github.io)
+
+One self-contained page (`index.html`), no build step. To set the contact email, edit `var EMAIL = ...` near the bottom of `index.html`.
