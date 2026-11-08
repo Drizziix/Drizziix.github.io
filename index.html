@@ -117,6 +117,9 @@ main { position: relative; }
 /* Hero */
 .hero { padding-block: clamp(48px, 9vw, 112px) clamp(56px, 8vw, 96px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.hero .id { display: flex; align-items: center; gap: 16px; }
+.hero .id > div { min-width: 0; }
+.avatar { width: 64px; height: 64px; flex: none; border-radius: 50%; border: 1px solid var(--line); overflow: hidden; }
 .hero .who { font: 400 var(--t-sm)/1.4 var(--mark); letter-spacing: .2em; text-transform: uppercase; color: var(--fg-strong); }
 .hero .role { margin-top: 8px; font-weight: 600; font-size: var(--t-sm); color: var(--muted); letter-spacing: .02em; }
 .hero h1 { margin-top: 24px; font: 800 clamp(var(--t-3xl), 6.2vw, var(--t-5xl))/1.04 var(--font); letter-spacing: -.025em; max-width: 13ch; }
@@ -256,8 +259,13 @@ blockquote.words footer { margin-top: 16px; font-size: var(--t-sm); color: var(-
     <div class="shell"><div class="inner hero-grid">
       <div>
         <div class="level"><span class="code">C1</span><span class="name">Hello</span></div>
-        <p class="who">JD</p>
-        <p class="role">Chiropractic student at Parker University · Air Force veteran · Jiu-jitsu</p>
+        <div class="id">
+          <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="Profile silhouette"><rect width="64" height="64" fill="var(--raise)"/><circle cx="32" cy="25" r="11" fill="var(--muted)"/><path d="M10 64 C10 47 20 40 32 40 C44 40 54 47 54 64 Z" fill="var(--muted)"/><path d="M32 4 V60" stroke="var(--accent)" stroke-width="1.5"/></svg>
+          <div>
+            <p class="who">JD</p>
+            <p class="role">Chiropractic student at Parker University · Air Force veteran · Jiu‑jitsu</p>
+          </div>
+        </div>
         <h1 id="h-hero">I help people <em>improve their lives.</em></h1>
         <p class="lede">I got hurt training, a chiropractor got me back on the mat, and now I'm learning how the body is wired so I can do that for other people. This is where I show the work while I get there.</p>
         <div class="ctas">
